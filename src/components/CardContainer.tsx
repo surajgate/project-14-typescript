@@ -2,14 +2,29 @@ import { Box, Button, Card, Container, Typography } from "@mui/material";
 import { useGlobalContext } from "../Context";
 import CardItem from "./CardItem";
 const CardContainer = () => {
-  const { total, clearCart } = useGlobalContext();
+  const { cart, total, clearCart } = useGlobalContext();
+
+  if(cart.length === 0){
+    return (
+      <>
+        <Container>
+          <Typography
+            variant="h4"
+            sx={{ display: "flex", justifyContent: "center", p: 2 }}
+          >
+            YOUR BAG IS EMPTY !
+          </Typography>
+        </Container>
+      </>
+    );
+  }
 
   return (
     <>
       <Container>
         <Card sx={{ m: 4 }}>
           <Typography
-            variant="h3"
+            variant="h4"
             sx={{ display: "flex", justifyContent: "center", p: 2 }}
           >
             YOUR BAG
